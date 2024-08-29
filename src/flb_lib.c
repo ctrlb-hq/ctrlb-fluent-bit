@@ -854,7 +854,7 @@ struct flb_cf *flb_read_from_file(struct flb_cf *cf,
                                         struct flb_config *config, char *file)
 {
     int ret = -1;
-    cf = flb_cf_fluentbit_create(cf, file, NULL, 0);
+    cf = flb_cf_create_from_file(cf, file);
     ret = flb_config_load_config_format(config, cf);
     if (ret != 0) {
         return NULL;
