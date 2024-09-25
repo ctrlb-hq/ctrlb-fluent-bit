@@ -31,6 +31,7 @@
 #include <fluent-bit/flb_callback.h>
 #include <fluent-bit/flb_kv.h>
 #include <fluent-bit/flb_metrics.h>
+#include <fluent-bit/flb_reload.h>
 #include <fluent-bit/flb_upstream.h>
 #include <fluent-bit/flb_downstream.h>
 #include <fluent-bit/tls/flb_tls.h>
@@ -862,4 +863,10 @@ struct flb_cf *flb_read_from_file(struct flb_cf *cf,
 
     config->cf_main = cf;
     return cf;
+}
+
+int flb_reload_ctx(flb_ctx_t *ctx)
+{
+    int ret = -1;
+    return flb_reload(ctx, ctx->config->cf_opts);
 }

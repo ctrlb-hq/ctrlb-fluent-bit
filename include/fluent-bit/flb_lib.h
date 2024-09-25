@@ -96,4 +96,7 @@ FLB_EXPORT struct flb_cf *flb_cf_context_get();
 FLB_EXPORT struct flb_cf *flb_read_from_file(struct flb_cf *cf,
                                         struct flb_config *config, char *file);
 
+/* hot reload the fluent-bit ctx*/
+FLB_EXPORT int flb_reload_ctx(flb_ctx_t *ctx);
+
 #endif
