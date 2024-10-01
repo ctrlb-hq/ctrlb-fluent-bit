@@ -31,6 +31,7 @@
 #include <fluent-bit/flb_callback.h>
 #include <fluent-bit/flb_kv.h>
 #include <fluent-bit/flb_metrics.h>
+#include <fluent-bit/flb_reload.h>
 #include <fluent-bit/flb_upstream.h>
 #include <fluent-bit/flb_downstream.h>
 #include <fluent-bit/tls/flb_tls.h>
@@ -848,4 +849,24 @@ struct flb_cf *flb_cf_context_get()
 
     cf = FLB_TLS_GET(flb_lib_active_cf_context);
     return cf;
+}
+
+struct flb_cf *flb_read_from_file(struct flb_cf *cf,
+                                        struct flb_config *config, char *file)
+{
+    int ret = -1;
+    cf = flb_cf_create_from_file(cf, file);
+    ret = flb_config_load_config_format(config, cf);
+    if (ret != 0) {
+        return NULL;
+    }
+
+    config->cf_main = cf;
+    return cf;
+}
+
+int flb_reload_ctx(flb_ctx_t *ctx)
+{
+    int ret = -1;
+    return flb_reload(ctx, ctx->config->cf_opts);
 }

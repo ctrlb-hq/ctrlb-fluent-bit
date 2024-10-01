@@ -22,6 +22,7 @@
 
 #include <fluent-bit/flb_macros.h>
 #include <fluent-bit/flb_config.h>
+#include <fluent-bit/flb_config_format.h>
 
 /* Lib engine status */
 #define FLB_LIB_ERROR     -1
@@ -90,5 +91,12 @@ FLB_EXPORT flb_ctx_t *flb_context_get();
 
 FLB_EXPORT void flb_cf_context_set(struct flb_cf *cf);
 FLB_EXPORT struct flb_cf *flb_cf_context_get();
+
+/* read config file and update the ctx*/
+FLB_EXPORT struct flb_cf *flb_read_from_file(struct flb_cf *cf,
+                                        struct flb_config *config, char *file);
+
+/* hot reload the fluent-bit ctx*/
+FLB_EXPORT int flb_reload_ctx(flb_ctx_t *ctx);
 
 #endif
