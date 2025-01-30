@@ -95,6 +95,7 @@ DEFINE_OPTION(FLB_FILTER_REWRITE_TAG          "Enable tag rewrite filter"       
 DEFINE_OPTION(FLB_FILTER_STDOUT               "Enable stdout filter"                         ON)
 DEFINE_OPTION(FLB_FILTER_SYSINFO              "Enable sysinfo filter"                        ON)
 DEFINE_OPTION(FLB_FILTER_THROTTLE             "Enable throttle filter"                       ON)
+DEFINE_OPTION(FLB_FILTER_SAMPLING             "Enable sampling filter"                       ON)
 DEFINE_OPTION(FLB_FILTER_THROTTLE_SIZE        "Enable throttle size filter"                  OFF)
 DEFINE_OPTION(FLB_FILTER_TYPE_CONVERTER       "Enable type converter filter"                 ON)
 DEFINE_OPTION(FLB_FILTER_TENSORFLOW           "Enable tensorflow filter"                     OFF)
